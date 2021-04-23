@@ -1,7 +1,15 @@
-import { configureStore } from "@reduxjs/toolkit";
-import arraySliceTodos from "./arraySlice.js";
-export default configureStore({
-  reducer: {
-    todos: arraySliceTodos
-  }
-});
+import {createStore, applyMiddleware} from 'redux'
+import thunk from 'redux-thunk'
+
+
+import rootReducer from './reducers'
+
+const initalState = {
+
+}
+
+const middleware = [thunk]
+
+const store = createStore(rootReducer, initalState, applyMiddleware(...middleware))
+
+export default store;
